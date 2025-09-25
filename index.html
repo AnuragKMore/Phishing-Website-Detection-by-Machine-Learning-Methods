@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Phishing URL Checker</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        input { width: 400px; padding: 10px; margin: 10px; }
+        button { padding: 10px 20px; }
+        #result { margin-top: 20px; font-weight: bold; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Phishing URL Checker</h1>
+    <input type="text" id="urlInput" placeholder="Enter a URL to check" />
+    <button onclick="checkUrl()">Check</button>
+
+    <div id="result"></div>
+
+    <script>
+        async function checkUrl() {
+            const url = document.getElementById("urlInput").value;
+            
+            if(!url) {
+                document.getElementById("result").innerText = "Please enter a URL!";
+                return;
+            }
+
+            
+            const safe = Math.random() > 0.5;
+            const score = Math.floor(Math.random() * 100);
+
+            const resultDiv = document.getElementById("result");
+            if(safe){
+                resultDiv.innerHTML = `✅ Safe! Safety Score: ${score}%`;
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.innerHTML = `⚠️ Phishing suspected! Safety Score: ${score}%`;
+                resultDiv.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
